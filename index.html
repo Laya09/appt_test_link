@@ -23,12 +23,23 @@
         };
       })();
 
-	    window.purechatApi.on('chatbox:ready', function () {
+	window.purechatApi.on('chatbox:ready', function () {
             purechatApi.set('visitor.name', 'John Doe');
             purechatApi.set('visitor.email', 'john.doe@example.com');
 
 	    purechatApi.set('chatbox.expanded', true); // Expanded the chat box (false collapses it)
 	    purechatApi.set('chatbox.showMinimizeButton', false); // Hides the minimize button
+        });
+
+	window.purechatApi.on('widgetClosed', function() {
+          Swal.fire({
+            title: 'Chat Ended!',
+            text: 'Would you like to leave feedback?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+          });
         });
     </script>
   </head>
