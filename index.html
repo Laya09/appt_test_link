@@ -32,7 +32,8 @@
         });
 
 	 // Listen for the close event
-        window.purechatApi.on('widgetClosed', function() {
+        //window.purechatApi.on('widgetClosed', function() {
+	window.purechatApi.on('chat:end', function (args) {
           // Prevent the default pop-up from showing (if possible)
           console.log('Chat widget closed');
           
