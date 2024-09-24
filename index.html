@@ -31,16 +31,6 @@
 	    purechatApi.set('chatbox.showMinimizeButton', false); // Hides the minimize button
         });
 
-	window.purechatApi.on('widgetClosed', function() {
-          Swal.fire({
-            title: 'Chat Ended!',
-            text: 'Would you like to leave feedback?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'No'
-          });
-        });
     </script>
   </head>
   <body>
