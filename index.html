@@ -32,6 +32,7 @@
         });
 
 	window.purechatApi.on('chat:end', function (args) {
+		console.log("Visitor's chat has ended :(");
 		Swal.fire({
             		title: 'Chat Ended!',
             		text: 'Would you like to leave feedback?',
