@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
       window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } };
       (function () {
@@ -31,19 +30,6 @@
 	    purechatApi.set('chatbox.expanded', true); // Expanded the chat box (false collapses it)
 	    purechatApi.set('chatbox.showMinimizeButton', false); // Hides the minimize button
         });
-
-	// window.purechatApi.on('chat:end', function (args) {
-		// console.log("Visitor's chat has ended :(");
-		// Swal.fire({
-  //           		title: 'Chat Ended!',
-  //           		text: 'Would you like to leave feedback?',
-  //           		icon: 'question',
-  //           		showCancelButton: true,
-  //           		confirmButtonText: 'Yes',
-  //           		cancelButtonText: 'No'
-  //         	});
-		console.log('Chat widget closed');
-	// });
 
     </script>
   </head>
