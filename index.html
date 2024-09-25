@@ -33,15 +33,32 @@
         });
 
 	window.purechatApi.on('chat:end', function (args) {
-		console.log("Visitor's chat has ended :(");
-		Swal.fire({
-            		title: 'Chat Ended!',
-            		text: 'Would you like to leave feedback?',
-            		icon: 'question',
-            		showCancelButton: true,
-            		confirmButtonText: 'Yes',
-            		cancelButtonText: 'No'
-          	});
+		// console.log("Visitor's chat has ended :(");
+		// Swal.fire({
+  //           		title: 'Chat Ended!',
+  //           		text: 'Would you like to leave feedback?',
+  //           		icon: 'question',
+  //           		showCancelButton: true,
+  //           		confirmButtonText: 'Yes',
+  //           		cancelButtonText: 'No'
+  //         	});
+		console.log('Chat widget closed');
+          
+          // Show your custom pop-up
+          var customPopup = document.createElement('div');
+          customPopup.innerHTML = `
+            <div style="position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:#fff; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+              <h2>Thank you for chatting!</h2>
+              <p>Would you like to leave feedback?</p>
+              <button onclick="closePopup()">Close</button>
+            </div>
+          `;
+          document.body.appendChild(customPopup);
+
+          // Function to close custom pop-up
+          function closePopup() {
+            document.body.removeChild(customPopup);
+          }
 	});
 
     </script>
