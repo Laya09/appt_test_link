@@ -1,36 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PureChat</title>
+
     <script type="text/javascript">
-      window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } };
-      (function () {
-        var done = false;
-        var script = document.createElement('script');
-        script.async = true;
-        script.type = 'text/javascript';
-        script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
-        document.getElementsByTagName('HEAD').item(0).appendChild(script);
-        script.onreadystatechange = script.onload = function (e) {
-          if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
-            //var w = new PCWidget({ c: '5586629f-d2da-4a2b-880b-fa6fb83c0d79', f: true });
+        window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } };
 
-	    var purechatApi = new PCWidget({ c: '5586629f-d2da-4a2b-880b-fa6fb83c0d79', f: true });
-        
-	    done = true;
-          }
-        };
-      })();
+        (function () {
+            var done = false;
+            var script = document.createElement('script');
+            script.async = true;
+            script.type = 'text/javascript';
+            script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
+            document.getElementsByTagName('HEAD')[0].appendChild(script);
+            
+            script.onreadystatechange = script.onload = function (e) {
+                if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+                    new PCWidget({ c: '5586629f-d2da-4a2b-880b-fa6fb83c0d79', f: true });
+                    done = true;
+                }
+            };
+        })();
 
-	    window.purechatApi.on('chatbox:ready', function () {
+        window.purechatApi.on('chatbox:ready', function () {
             purechatApi.set('visitor.name', 'John Doe');
             purechatApi.set('visitor.email', 'john.doe@example.com');
+            purechatApi.set('chatbox.expanded', true); // Expands the chat box
+            purechatApi.set('chatbox.showMinimizeButton', false); // Hides the minimize button
         });
+
+        // Function to check for the iframe and hide the element
+        function checkIframe() {
+            const iframe = document.querySelector('.purechat-messenger-frame');
+            if (iframe) {
+                console.log("Iframe found:", iframe);
+
+                // Access the document inside the iframe
+                const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+                console.log("Inner doc:", innerDoc);
+
+                // Check for the specific element inside the iframe
+                const element = innerDoc.querySelector('.purechat-conversation-form-footer'); // Replace with the actual ID
+                const elementEmoji = innerDoc.querySelector('.purechat-conversation-form-action'); // Replace with the actual ID
+
+                console.log("Element found:", element);
+
+                if (element) {
+                    // Do something with the element
+                    element.style.display = 'none'; // Hide the element
+                    elementEmoji.style.display = 'none'; 
+                    return true; // Element was found and modified
+                } else {
+                    console.log('Element not found inside the iframe.');
+                }
+            } else {
+                console.log('Iframe not found.');
+            }
+            return false; // Element not modified
+        }
+
+        // Initial check for the iframe
+        setTimeout(() => {
+            if (!checkIframe()) {
+                // Set up a MutationObserver to watch for changes in the DOM
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.addedNodes.length) {
+                            if (checkIframe()) {
+                                observer.disconnect(); // Stop observing once the element is found and modified
+                            }
+                        }
+                    });
+                });
+
+                // Start observing the body for child additions
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+        }, 1000);
     </script>
-  </head>
-  <body>
-    <h1>PureChat Widget</h1>
-  </body>
+</head>
+<body>
+</body>
 </html>
