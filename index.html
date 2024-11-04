@@ -34,19 +34,12 @@
             checkIframeWithTimeout();
         });
 
-        window.purechatApi.on('chat:end', function (args) {
-            // Prevent the default confirmation popup
-            args.preventDefault(); // This may work if Pure Chat supports event prevention
+        purechatApi.on('chat:start', function (args) {
+            document.title = 'End Chat';
+        });
 
-            // Display custom confirmation for mobile users
-            if (/Mobi|Android/i.test(navigator.userAgent)) { // Check if mobile
-                if (confirm("Are you sure you want to end the chat?")) {
-                    // Custom action or call Pure Chat's default end method
-                    window.purechatApi.set('chatbox.end');
-                }
-            } else {
-                document.title = 'End Chat'; // Update the title for other devices if needed
-            }
+        window.purechatApi.on('chat:end', function (args) {
+            document.title = 'End Chat';
         });
 
         // Function to check for the iframe and hide the element
