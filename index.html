@@ -37,7 +37,10 @@
         purechatApi.on('chat:start', function (args) {
             document.title = 'End Chat';
            const closeButton = document.querySelector('.purechat-btn purechat-btn-link purechat-btn-inline')
-            console.log({closeButton})
+            console.log("cloeeeeeeeeee",closeButton)
+            const elements = document.getElementsByClassName('your-class-name');
+const firstElement = elements[0];
+             console.log("getElementsByClassName",elements)
         });
 
         // window.purechatApi.on('chat:end', function (args) {
