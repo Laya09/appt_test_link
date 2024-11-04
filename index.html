@@ -38,9 +38,14 @@
             document.title = 'End Chat';
         });
 
+        // window.purechatApi.on('chat:end', function (args) {
+        //     document.title = 'End Chat';
+        //     window.purechatApi.set('chatbox.end');
+        // });
+
         window.purechatApi.on('chat:end', function (args) {
-            document.title = 'End Chat';
-            window.purechatApi.set('chatbox.end');
+            args.preventDefault(); // Prevents the popup from appearing
+            window.purechatApi.set('chatbox.close'); // Directly closes the chat
         });
 
         // Function to check for the iframe and hide the element
@@ -63,7 +68,7 @@
                 if (element) {
                     // Do something with the element
                     element.style.display = 'none'; // Hide the element
-                    elementEmoji.style.display = 'none'; 
+                    //elementEmoji.style.display = 'none'; 
 
                     // Change the font size
                     headerText.style.fontSize = '16px'; // Set the desired font size
