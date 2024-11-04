@@ -39,30 +39,24 @@
             setTimeout(()=>{ 
                  const iframe = document.querySelector('.purechat-messenger-frame');
   const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-          
-//             const elements = innerDoc.getElementsByClassName('purechat-btn purechat-btn-link purechat-btn-inline');
-// const firstElement = elements[0];
-
-                  const headerActions = innerDoc.querySelector('.purechat-messenger-header-actions'); 
-                const headerAction = innerDoc.querySelector('.purechat-messenger-header-action'); 
-
-                if (headerAction) {
-    headerAction.addEventListener('click', (event) => {
-        event.stopPropagation(); // Stops the default popup action
-        window.purechatApi.set('chatbox.close'); // Closes the chat without a confirmation popup
-    }, true);
-}
-
                       
-           const closeButton = innerDoc.querySelector('.purechat-btn.purechat-btn-link.purechat-btn-inline')
-            console.log("cloeeeeeeeeee",closeButton)
+                       const closeButton = innerDoc.querySelector('.purechat-btn.purechat-btn-link.purechat-btn-inline');
+console.log("Close Button Element:", closeButton);
 
-                if (closeButton) {
-    const title = closeButton.getAttribute('title'); // Get the title attribute
-    console.log("Close Button Title:", title);
+if (closeButton) {
+    const buttonTitle = closeButton.getAttribute('title');
+    console.log("Close Button Title:", buttonTitle);
+
+    if (buttonTitle === 'End Chat') {
+        closeButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            window.purechatApi.set('chatbox.close');
+        }, true);
+    }
 } else {
     console.error("Close button not found");
 }
+
 
                 console.log("headerssss siiaidfsd",headerActions, headerAction);
              // console.log("getElementsByClassName",elements)
