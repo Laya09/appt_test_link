@@ -34,6 +34,11 @@
             checkIframeWithTimeout();
         });
 
+        window.purechatApi.on('chatbox:end', function () {
+            // Assuming this event is triggered when the chat ends, modify as needed
+            document.title = 'End Chat'; // Changes the document's title
+        });
+
         // Function to check for the iframe and hide the element
         function checkIframe() {
             const iframe = document.querySelector('.purechat-messenger-frame');
