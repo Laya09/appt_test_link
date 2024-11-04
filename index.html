@@ -39,9 +39,10 @@
             setTimeout(()=>{ 
                  const iframe = document.querySelector('.purechat-messenger-frame');
   const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-           const closeButton = document.querySelector('.purechat-btn purechat-btn-link purechat-btn-inline')
+                
+           const closeButton = innerDoc.querySelector('.purechat-btn purechat-btn-link purechat-btn-inline')
             console.log("cloeeeeeeeeee",closeButton)
-            const elements = document.getElementsByClassName('purechat-btn purechat-btn-link purechat-btn-inline');
+            const elements = innerDoc.getElementsByClassName('purechat-btn purechat-btn-link purechat-btn-inline');
 const firstElement = elements[0];
 
                   const headerActions = innerDoc.querySelector('.purechat-messenger-header-actions'); 
