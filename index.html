@@ -13,7 +13,6 @@
             script.type = 'text/javascript';
             script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
             document.getElementsByTagName('HEAD')[0].appendChild(script);
-            document.title = 'End Chat';
             
             script.onreadystatechange = script.onload = function (e) {
                 if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
@@ -35,10 +34,20 @@
             checkIframeWithTimeout();
         });
 
-        // window.purechatApi.on('chatbox:end', function () {
-        //     // Assuming this event is triggered when the chat ends, modify as needed
-        //     document.title = 'End Chat'; // Changes the document's title
-        // });
+        window.purechatApi.on('chat:end', function (args) {
+            // Prevent the default confirmation popup
+            args.preventDefault(); // This may work if Pure Chat supports event prevention
+
+            // Display custom confirmation for mobile users
+            if (/Mobi|Android/i.test(navigator.userAgent)) { // Check if mobile
+                if (confirm("Are you sure you want to end the chat?")) {
+                    // Custom action or call Pure Chat's default end method
+                    window.purechatApi.set('chatbox.end');
+                }
+            } else {
+                document.title = 'End Chat'; // Update the title for other devices if needed
+            }
+        });
 
         // Function to check for the iframe and hide the element
         function checkIframe() {
