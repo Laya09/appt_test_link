@@ -42,14 +42,22 @@
                 
            const closeButton = innerDoc.querySelector('.purechat-btn purechat-btn-link purechat-btn-inline')
             console.log("cloeeeeeeeeee",closeButton)
-            const elements = innerDoc.getElementsByClassName('purechat-btn purechat-btn-link purechat-btn-inline');
-const firstElement = elements[0];
+//             const elements = innerDoc.getElementsByClassName('purechat-btn purechat-btn-link purechat-btn-inline');
+// const firstElement = elements[0];
 
                   const headerActions = innerDoc.querySelector('.purechat-messenger-header-actions'); 
                 const headerAction = innerDoc.querySelector('.purechat-messenger-header-action'); 
 
+                if (headerAction) {
+    headerAction.addEventListener('click', (event) => {
+        event.stopPropagation(); // Stops the default popup action
+        window.purechatApi.set('chatbox.close'); // Closes the chat without a confirmation popup
+    }, true);
+}
+
                 console.log("headerssss siiaidfsd",headerActions, headerAction);
-             console.log("getElementsByClassName",elements)},2000)
+             // console.log("getElementsByClassName",elements)
+            },2000)
         });
 
         // window.purechatApi.on('chat:end', function (args) {
