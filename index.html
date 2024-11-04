@@ -39,9 +39,7 @@
             setTimeout(()=>{ 
                  const iframe = document.querySelector('.purechat-messenger-frame');
   const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                
-           const closeButton = innerDoc.querySelector('.purechat-btn purechat-btn-link purechat-btn-inline')
-            console.log("cloeeeeeeeeee",closeButton)
+          
 //             const elements = innerDoc.getElementsByClassName('purechat-btn purechat-btn-link purechat-btn-inline');
 // const firstElement = elements[0];
 
@@ -54,6 +52,10 @@
         window.purechatApi.set('chatbox.close'); // Closes the chat without a confirmation popup
     }, true);
 }
+
+                      
+           const closeButton = innerDoc.querySelector('.purechat-btn purechat-btn-link purechat-btn-inline')
+            console.log("cloeeeeeeeeee",closeButton)
 
                 console.log("headerssss siiaidfsd",headerActions, headerAction);
              // console.log("getElementsByClassName",elements)
