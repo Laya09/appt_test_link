@@ -40,6 +40,7 @@
 
         window.purechatApi.on('chat:end', function (args) {
             document.title = 'End Chat';
+            window.purechatApi.set('chatbox.end');
         });
 
         // Function to check for the iframe and hide the element
