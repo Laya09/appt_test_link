@@ -54,8 +54,15 @@
 }
 
                       
-           const closeButton = innerDoc.querySelector('.purechat-btn purechat-btn-link purechat-btn-inline')
+           const closeButton = innerDoc.querySelector('.purechat-btn.purechat-btn-link.purechat-btn-inline')
             console.log("cloeeeeeeeeee",closeButton)
+
+                if (closeButton) {
+    const title = closeButton.getAttribute('title'); // Get the title attribute
+    console.log("Close Button Title:", title);
+} else {
+    console.error("Close button not found");
+}
 
                 console.log("headerssss siiaidfsd",headerActions, headerAction);
              // console.log("getElementsByClassName",elements)
