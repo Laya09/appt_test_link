@@ -41,6 +41,11 @@
             console.log("cloeeeeeeeeee",closeButton)
             const elements = document.getElementsByClassName('purechat-btn purechat-btn-link purechat-btn-inline');
 const firstElement = elements[0];
+
+                  const headerActions = innerDoc.querySelector('.purechat-messenger-header-actions'); 
+                const headerAction = innerDoc.querySelector('.purechat-messenger-header-action'); 
+
+                console.log("headerssss siiaidfsd",headerActions, headerAction);
              console.log("getElementsByClassName",elements)},2000)
         });
 
@@ -70,11 +75,6 @@ const firstElement = elements[0];
                 const headerText = innerDoc.querySelector('.purechat-messenger-header-text'); 
 
                 console.log("Element found:", element);
-
-                  const headerActions = innerDoc.querySelector('.purechat-messenger-header-actions'); 
-                const headerAction = innerDoc.querySelector('.purechat-messenger-header-action'); 
-
-                console.log("headerssss siiaidfsd",headerActions, headerAction);
 
                 if (element) {
                     // Do something with the element
