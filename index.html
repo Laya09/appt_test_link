@@ -68,19 +68,33 @@
                     }
 
                     if(messageArea){
-                        // Apply Flexbox styles to center the textarea
-                        messageArea.style.display = 'flex';
-                        messageArea.style.flexDirection = 'column';
-                        messageArea.style.justifyContent = 'center';
-                        messageArea.style.alignItems = 'center';
-                        messageArea.style.height = '100px';
+                        if (messageArea) {
+                            // Apply Flexbox to the message area for vertical alignment
+                            messageArea.style.display = 'flex';
+                            messageArea.style.flexDirection = 'column';
+                            messageArea.style.justifyContent = 'center'; // Center vertically
+                            messageArea.style.alignItems = 'center'; // Center horizontally
+                            messageArea.style.height = '100px'; // Ensure the height is set explicitly
+                            messageArea.style.margin = '0'; // Reset any inherited margin
+                            messageArea.style.padding = '0'; // Reset any inherited padding
 
-                        // Adjust each textarea style
-                        const textareas = messageArea.querySelectorAll('textarea');
-                        textareas.forEach((textarea) => {
-                            textarea.style.margin = '0'; // Reset margins
-                            textarea.style.padding = '5px'; // Adjust padding as needed
-                        });
+                            // Select all textarea elements inside the message area
+                            const textareas = messageArea.querySelectorAll('textarea');
+                            textareas.forEach((textarea) => {
+                                // Reset margins and paddings
+                                textarea.style.margin = '0';
+                                textarea.style.padding = '5px'; // Add padding for user experience
+
+                                // Explicitly set the height and width
+                                textarea.style.height = '30px';
+                                textarea.style.width = '90%'; // Adjust width to fit the message area
+
+                                // Set box-sizing to include padding and border in the dimensions
+                                textarea.style.boxSizing = 'border-box';
+
+                                // Reset alignment and display
+                                textarea.style.display = 'block'; // Ensure block display
+                            });
                     }
 
                     return true; // Element was found and modified
