@@ -34,46 +34,6 @@
             checkIframeWithTimeout();
         });
 
-        purechatApi.on('chat:start', function (args) {
-            document.title = 'End Chat';
-            setTimeout(()=>{ 
-                 const iframe = document.querySelector('.purechat-messenger-frame');
-  const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                      
-                       const closeButton = innerDoc.querySelector('.purechat-btn.purechat-btn-link.purechat-btn-inline');
-console.log("Close Button Element:", closeButton);
-
-if (closeButton) {
-    const buttonTitle = closeButton.getAttribute('title');
-    console.log("Close Button Title:", buttonTitle);
-
-    if (buttonTitle === 'End Chat') {
-        closeButton.addEventListener('click', (event) => {
-            //event.stopPropagation();
-            //args.preventDefault(); 
-            window.purechatApi.set('chatbox.close');
-        }, true);
-    }
-} else {
-    console.error("Close button not found");
-}
-
-
-                console.log("headerssss siiaidfsd",headerActions, headerAction);
-             // console.log("getElementsByClassName",elements)
-            },2000)
-        });
-
-        // window.purechatApi.on('chat:end', function (args) {
-        //     document.title = 'End Chat';
-        //     window.purechatApi.set('chatbox.end');
-        // });
-
-        // window.purechatApi.on('chat:end', function (args) {
-        //     args.preventDefault(); // Prevents the popup from appearing
-        //     window.purechatApi.set('chatbox.close'); // Directly closes the chat
-        // });
-
         // Function to check for the iframe and hide the element
         function checkIframe() {
             const iframe = document.querySelector('.purechat-messenger-frame');
@@ -94,16 +54,15 @@ if (closeButton) {
                 if (element) {
                     // Do something with the element
                     element.style.display = 'none'; // Hide the element
-                    //elementEmoji.style.display = 'none'; 
+                    elementEmoji.style.display = 'none'; 
 
                     // Change the font size
-                    headerText.style.fontSize = '16px'; // Set the desired font size
+                    headerText.style.fontSize = '18px'; // Set the desired font size
 
                     return true; // Element was found and modified
                 } else {
                     console.log('Element not found inside the iframe.');
                 }
-    
             } else {
                 console.log('Iframe not found.');
             }
