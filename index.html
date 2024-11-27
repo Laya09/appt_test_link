@@ -45,16 +45,16 @@
                 console.log("Inner doc:", innerDoc);
 
                 // Check for the specific element inside the iframe
-                const element = innerDoc.querySelector('.purechat-conversation-form-footer'); // Replace with the actual ID
+                const elementFooter = innerDoc.querySelector('.purechat-conversation-form-footer'); // Replace with the actual ID
                 const elementEmoji = innerDoc.querySelector('.purechat-conversation-form-action'); 
                 const headerText = innerDoc.querySelector('.purechat-messenger-header-text'); 
 
-                console.log("Element found:", element);
+                console.log("Element found:", elementFooter);
 
                 if (element) {
                     // Do something with the element
-                    element.style.display = 'visible'; // Hide the element
-                    elementEmoji.style.display = 'visible'; 
+                    elementFooter.style.display = 'none'; // Hide the element
+                    elementEmoji.style.display = 'none'; 
 
                     // Change the font size
                     headerText.style.fontSize = '18px'; // Set the desired font size
