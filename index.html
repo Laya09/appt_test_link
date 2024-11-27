@@ -72,7 +72,15 @@
                         messageArea.style.display = 'flex';
                         messageArea.style.flexDirection = 'column';
                         messageArea.style.justifyContent = 'center';
+                        messageArea.style.alignItems = 'center';
                         messageArea.style.height = '100px';
+
+                        // Adjust each textarea style
+                        const textareas = messageArea.querySelectorAll('textarea');
+                        textareas.forEach((textarea) => {
+                            textarea.style.margin = '0'; // Reset margins
+                            textarea.style.padding = '5px'; // Adjust padding as needed
+                        });
                     }
 
                     return true; // Element was found and modified
